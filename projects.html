@@ -6,10 +6,27 @@
     <title>Projects — Rahil Kharbanda</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body { font-family: 'Inter', sans-serif; }
         .gradient-text {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark .gradient-text {
+            background: linear-gradient(135deg, #a78bfa 0%, #c084fc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -20,6 +37,9 @@
             margin-bottom: 1rem; 
             color: #111827; 
         }
+        .dark .case-study-content h2 {
+            color: #f3f4f6;
+        }
         .case-study-content h3 { 
             font-size: 1.125rem; 
             font-weight: 600; 
@@ -27,16 +47,25 @@
             margin-bottom: 0.75rem; 
             color: #374151; 
         }
+        .dark .case-study-content h3 {
+            color: #d1d5db;
+        }
         .case-study-content p { 
             margin-bottom: 1rem; 
             line-height: 1.75; 
             color: #4b5563; 
+        }
+        .dark .case-study-content p {
+            color: #9ca3af;
         }
         .case-study-content ul { 
             list-style-type: disc; 
             padding-left: 1.5rem; 
             margin-bottom: 1rem; 
             color: #4b5563; 
+        }
+        .dark .case-study-content ul {
+            color: #9ca3af;
         }
         .case-study-content li { 
             margin-bottom: 0.5rem; 
@@ -45,20 +74,33 @@
         .case-study-content strong { 
             color: #111827; 
         }
+        .dark .case-study-content strong {
+            color: #f3f4f6;
+        }
+        .dark .case-study-content ol {
+            color: #9ca3af;
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
+<body class="bg-gray-50 text-gray-800 antialiased transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100">
 
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white/80 backdrop-blur-md border-b border-gray-200 z-50">
+    <nav class="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 z-50 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold text-gray-900">Rahil Kharbanda</a>
-            <div class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="index.html#about" class="text-gray-600 hover:text-gray-900 transition">About</a>
-                <a href="projects.html" class="text-indigo-600">Projects</a>
-                <a href="index.html#experience" class="text-gray-600 hover:text-gray-900 transition">Experience</a>
-                <a href="index.html#leadership" class="text-gray-600 hover:text-gray-900 transition">Leadership</a>
-                <a href="index.html#contact" class="text-gray-600 hover:text-gray-900 transition">Contact</a>
+            <a href="index.html" class="text-xl font-bold text-gray-900 dark:text-white">Rahil Kharbanda</a>
+            <div class="flex items-center gap-6">
+                <div class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="index.html#about" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">About</a>
+                    <a href="projects.html" class="text-indigo-600 dark:text-indigo-400">Projects</a>
+                    <a href="index.html#experience" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">Experience</a>
+                    <a href="index.html#leadership" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">Leadership</a>
+                    <a href="index.html#contact" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition">Contact</a>
+                </div>
+                <!-- Dark Mode Toggle -->
+                <button id="themeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition" aria-label="Toggle dark mode">
+                    <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    <svg id="moonIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                </button>
             </div>
         </div>
     </nav>
@@ -66,9 +108,9 @@
     <!-- Page Header -->
     <section class="pt-32 pb-12 px-6">
         <div class="max-w-4xl mx-auto">
-            <p class="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-4">Portfolio</p>
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Selected Projects</h1>
-            <p class="text-xl text-gray-600 max-w-2xl">A collection of work across AI prototyping, business strategy, and enterprise analytics — built during internships, competitions, and self-directed learning.</p>
+            <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-4">Portfolio</p>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6">Selected Projects</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl">A collection of work across AI prototyping, business strategy, and enterprise analytics — built during internships, competitions, and self-directed learning.</p>
         </div>
     </section>
 
@@ -77,16 +119,16 @@
         <div class="max-w-4xl mx-auto space-y-6">
             
             <!-- Project 1: Axis Max Life Strategy -->
-            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition cursor-pointer" onclick="showCaseStudy('amli')">
+            <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition cursor-pointer" onclick="showCaseStudy('amli')">
                 <div class="p-8">
                     <div class="flex items-center gap-3 mb-4">
-                        <span class="px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-bold rounded-full uppercase tracking-wide">Strategy</span>
-                        <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded-full uppercase tracking-wide">Insurance</span>
-                        <span class="px-3 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded-full uppercase tracking-wide">Board-Level</span>
+                        <span class="px-3 py-1 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 text-xs font-bold rounded-full uppercase tracking-wide">Strategy</span>
+                        <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300 text-xs font-bold rounded-full uppercase tracking-wide">Insurance</span>
+                        <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 text-xs font-bold rounded-full uppercase tracking-wide">Board-Level</span>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-3">Two-Track Growth Strategy for Axis Max Life Insurance</h2>
-                    <p class="text-gray-600 mb-4 leading-relaxed">A board-level strategy case study for India's fourth-largest private life insurer — market research, competitive diagnostics, and content strategy for the outbound student market and Gen Z financial trust. Sponsored by the CEO and CFO.</p>
-                    <div class="flex items-center gap-4 text-sm text-gray-500">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Two-Track Growth Strategy for Axis Max Life Insurance</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">A board-level strategy case study for India's fourth-largest private life insurer — market research, competitive diagnostics, and content strategy for the outbound student market and Gen Z financial trust. Sponsored by the CEO and CFO.</p>
+                    <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
                         <span class="flex items-center gap-1">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                             May–Aug 2026
@@ -96,7 +138,7 @@
                             Gurgaon, India
                         </span>
                     </div>
-                    <div class="mt-4 flex items-center text-indigo-600 font-semibold text-sm">
+                    <div class="mt-4 flex items-center text-indigo-600 dark:text-indigo-400 font-semibold text-sm">
                         Read Case Study
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </div>
@@ -104,22 +146,22 @@
             </div>
 
             <!-- Project 2: AI Medical Underwriting -->
-            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition">
+            <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition">
                 <div class="p-8">
                     <div class="flex items-center gap-3 mb-4">
-                        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full uppercase tracking-wide">AI</span>
-                        <span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full uppercase tracking-wide">Healthcare</span>
-                        <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-bold rounded-full uppercase tracking-wide">Python</span>
+                        <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 text-xs font-bold rounded-full uppercase tracking-wide">AI</span>
+                        <span class="px-3 py-1 bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 text-xs font-bold rounded-full uppercase tracking-wide">Healthcare</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-bold rounded-full uppercase tracking-wide">Python</span>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-3">AI-Assisted Medical Underwriting Framework</h2>
-                    <p class="text-gray-600 mb-4 leading-relaxed">Built a Python-based clinical threshold engine combined with Google's MedGemma 4B multimodal medical foundation model to analyse medical reports and support life insurance underwriting decisions at Axis Max Life Insurance.</p>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">AI-Assisted Medical Underwriting Framework</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">Built a Python-based clinical threshold engine combined with Google's MedGemma 4B multimodal medical foundation model to analyse medical reports and support life insurance underwriting decisions at Axis Max Life Insurance.</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Python</span>
-                        <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">MedGemma 4B</span>
-                        <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Clinical Threshold Engine</span>
-                        <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Medical Report Analysis</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded">MedGemma 4B</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded">Clinical Threshold Engine</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded">Medical Report Analysis</span>
                     </div>
-                    <div class="flex items-center gap-4 text-sm text-gray-500">
+                    <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
                         <span class="flex items-center gap-1">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                             May–Aug 2026
@@ -129,22 +171,22 @@
             </div>
 
             <!-- Project 3: Voice Verification -->
-            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition">
+            <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition">
                 <div class="p-8">
                     <div class="flex items-center gap-3 mb-4">
-                        <span class="px-3 py-1 bg-teal-100 text-teal-700 text-xs font-bold rounded-full uppercase tracking-wide">NLP</span>
-                        <span class="px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-bold rounded-full uppercase tracking-wide">Audio</span>
-                        <span class="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-bold rounded-full uppercase tracking-wide">Python</span>
+                        <span class="px-3 py-1 bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300 text-xs font-bold rounded-full uppercase tracking-wide">NLP</span>
+                        <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/40 text-yellow-700 dark:text-yellow-300 text-xs font-bold rounded-full uppercase tracking-wide">Audio</span>
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-bold rounded-full uppercase tracking-wide">Python</span>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-3">Voice Verification & Tone Analysis AI</h2>
-                    <p class="text-gray-600 mb-4 leading-relaxed">Developed an AI prototype using Meta's Wav2Vec2 speech model to analyse verification-call audio through speech tone and transcript analysis, supporting customer verification and underwriting assessment at Axis Max Life Insurance.</p>
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Voice Verification & Tone Analysis AI</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">Developed an AI prototype using Meta's Wav2Vec2 speech model to analyse verification-call audio through speech tone and transcript analysis, supporting customer verification and underwriting assessment at Axis Max Life Insurance.</p>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Python</span>
-                        <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Wav2Vec2</span>
-                        <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Speech Recognition</span>
-                        <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded">Sentiment Analysis</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded">Python</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded">Wav2Vec2</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded">Speech Recognition</span>
+                        <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded">Sentiment Analysis</span>
                     </div>
-                    <div class="flex items-center gap-4 text-sm text-gray-500">
+                    <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
                         <span class="flex items-center gap-1">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                             May–Aug 2026
@@ -154,15 +196,15 @@
             </div>
 
             <!-- Project 4: Enterprise Challenge -->
-            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition">
+            <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition">
                 <div class="p-8">
                     <div class="flex items-center gap-3 mb-4">
-                        <span class="px-3 py-1 bg-red-100 text-red-700 text-xs font-bold rounded-full uppercase tracking-wide">Team Lead</span>
-                        <span class="px-3 py-1 bg-pink-100 text-pink-700 text-xs font-bold rounded-full uppercase tracking-wide">2nd Place</span>
+                        <span class="px-3 py-1 bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 text-xs font-bold rounded-full uppercase tracking-wide">Team Lead</span>
+                        <span class="px-3 py-1 bg-pink-100 dark:bg-pink-900/40 text-pink-700 dark:text-pink-300 text-xs font-bold rounded-full uppercase tracking-wide">2nd Place</span>
                     </div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-3">Aerogen Enterprise Challenge — Employee Well-being</h2>
-                    <p class="text-gray-600 mb-4 leading-relaxed">Led a team of students in a 7-week industry challenge with Aerogen to design solutions improving employee well-being across three employee profiles. Secured 2nd place overall. Solutions taken into consideration by Aerogen.</p>
-                    <div class="flex items-center gap-4 text-sm text-gray-500">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Aerogen Enterprise Challenge — Employee Well-being</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">Led a team of students in a 7-week industry challenge with Aerogen to design solutions improving employee well-being across three employee profiles. Secured 2nd place overall. Solutions taken into consideration by Aerogen.</p>
+                    <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
                         <span class="flex items-center gap-1">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                             Oct–Nov 2025
@@ -181,10 +223,10 @@
     <!-- Case Study Modal (Hidden by default) -->
     <div id="caseStudyModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden overflow-y-auto">
         <div class="min-h-screen px-4 py-8 flex items-start justify-center">
-            <div class="bg-white rounded-2xl max-w-3xl w-full shadow-2xl relative">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-3xl w-full shadow-2xl relative border border-gray-200 dark:border-gray-700">
                 <!-- Close Button -->
-                <button onclick="closeCaseStudy()" class="absolute top-4 right-4 w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition">
-                    <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                <button onclick="closeCaseStudy()" class="absolute top-4 right-4 w-10 h-10 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full flex items-center justify-center transition">
+                    <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
                 
                 <div class="p-8 md:p-12 case-study-content" id="caseStudyContent">
@@ -195,22 +237,57 @@
     </div>
 
     <!-- Footer -->
-    <footer class="py-8 bg-gray-950 text-gray-500 text-center text-sm mt-12">
+    <footer class="py-8 bg-gray-950 dark:bg-black text-gray-500 dark:text-gray-600 text-center text-sm mt-12 transition-colors duration-300">
         <p>© 2026 Rahil Kharbanda. Built with curiosity and code.</p>
     </footer>
+
+    <!-- Dark Mode Script -->
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+        const html = document.documentElement;
+
+        // Check system preference on load
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.classList.add('dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        }
+
+        // Toggle function
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            sunIcon.classList.toggle('hidden');
+            moonIcon.classList.toggle('hidden');
+        });
+
+        // Listen for system changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (e.matches) {
+                html.classList.add('dark');
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                html.classList.remove('dark');
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        });
+    </script>
 
     <script>
         const caseStudies = {
             amli: `
-                <p class="text-sm font-semibold text-indigo-600 uppercase tracking-wider mb-2">Case Study</p>
-                <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">Building a Two-Track Growth Strategy for Axis Max Life Insurance</h1>
-                <p class="text-lg text-gray-500 mb-8 italic">A board-level strategy case study — market research, competitive diagnostics, and content strategy for India's outbound student market and Gen Z financial trust.</p>
+                <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider mb-2">Case Study</p>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-white mb-6">Building a Two-Track Growth Strategy for Axis Max Life Insurance</h1>
+                <p class="text-lg text-gray-500 dark:text-gray-400 mb-8 italic">A board-level strategy case study — market research, competitive diagnostics, and content strategy for India's outbound student market and Gen Z financial trust.</p>
                 
                 <h2>The Problem Statement</h2>
                 <p>Axis Max Life Insurance asked a question that sounds simple and isn't: <em>how does a life insurer earn relevance with a generation that doesn't think about life insurance yet?</em></p>
                 <p>Two symptoms pointed at the same root cause.</p>
                 <p><strong>First</strong>, a large, mobile, financially-active cohort was going largely unaddressed. India sends hundreds of thousands of students abroad every year — a segment that takes on six- and seven-figure education debt, is medically underwritable at its healthiest point in life, and is structurally exposed to exactly the kind of risk life insurance exists to cover. No insurer in the market had built anything specific for them.</p>
-                <p><strong>Second</strong>, the company's digital presence — Instagram, YouTube, the full social footprint — was underperforming direct competitors on almost every measurable axis: posting frequency, format diversity, engagement rate, long-form output. In a category where trust is the entire product, being invisible (or generic) online is not a cosmetic problem. It's a distribution problem.</p>
+                <p><strong>Second</strong>, the company's digital presence presented clear opportunities for improvement across posting frequency, format diversity, engagement rate, and long-form output on key social platforms. In a category where trust is the entire product, being invisible (or generic) online is not a cosmetic problem. It's a distribution problem.</p>
                 <p>The brief wasn't "run a marketing campaign." It was: build a defensible, board-approvable strategy that (a) turns an underserved segment into a genuine acquisition channel, and (b) repositions the company's content presence from reactive and thin to intentional and structurally sound — without contradicting the regulatory reality that a life-only licensed insurer operates under.</p>
                 
                 <h2>Constraints That Shaped Everything</h2>
@@ -246,7 +323,7 @@
                 
                 <h2>How the Problem Was Tackled</h2>
                 <p>The strategic work followed a deliberate sequence:</p>
-                <ol class="list-decimal pl-6 mb-4 text-gray-600 space-y-2">
+                <ol class="list-decimal pl-6 mb-4 text-gray-600 dark:text-gray-400 space-y-2">
                     <li><strong>Size the opportunity honestly</strong>, including the parts that complicate the pitch (shrinking competitive windows, regulatory constraints, data that doesn't exist and shouldn't be fabricated).</li>
                     <li><strong>Map the existing competitive and content landscape</strong> on its own terms before proposing anything — including correcting an early misreading of a competitor's format once better information came in.</li>
                     <li><strong>Stress-test every strategic option</strong> against two questions: does this survive a change in personnel (succession risk), and does this survive a compliance review (regulatory risk)?</li>
@@ -255,50 +332,4 @@
                 </ol>
                 
                 <h2>The Kind of Solutions That Came Out of It</h2>
-                <p>Without disclosing the specific mechanics — those stay with the client, by design — the work landed on two connected strategic tracks:</p>
-                <ul>
-                    <li><strong>An acquisition strategy</strong> for the outbound-student segment, built on distribution channels that already existed in adjacent ecosystems rather than requiring new infrastructure, sequenced carefully around the licensing boundary the company operates under.</li>
-                    <li><strong>An institutional trust-and-content strategy</strong>, built around a structural insight the competitive research surfaced: the single biggest content risk in this category is over-indexing on one person's presence, and the strongest content models are the ones that can survive a change in who's in the room.</li>
-                </ul>
-                <p>Both tracks were designed to reinforce the same funnel rather than run as separate initiatives — trust-building content and acquisition mechanics feeding the same audience at different points in their decision-making, rather than competing for budget as unrelated projects.</p>
-                
-                <h2>What This Project Actually Tested</h2>
-                <p>Strip away the insurance-specific detail and this was an exercise in a few transferable skills:</p>
-                <ul>
-                    <li>Turning a vague strategic mandate into a falsifiable set of research questions</li>
-                    <li>Holding a hard line between "confirmed," "observed," and "unverified" — and never letting the deadline blur that line</li>
-                    <li>Catching my own confirmation bias by deliberately re-running research through an independently-prompted second pass</li>
-                    <li>Designing strategy that has to survive a skeptical, technically literate audience, not just sound persuasive in the room</li>
-                    <li>Knowing when a compelling number is actually a category error waiting to be caught by someone smarter than the slide</li>
-                </ul>
-                
-                <div class="mt-8 p-4 bg-gray-50 border-l-4 border-indigo-500 rounded-r-lg">
-                    <p class="text-sm text-gray-500 italic">Details of the specific strategic recommendations, channel partnerships, and content architecture developed for Axis Max Life Insurance are withheld from public disclosure, as this work remains a competitive strategic asset for the client.</p>
-                </div>
-            `
-        };
-
-        function showCaseStudy(id) {
-            document.getElementById('caseStudyContent').innerHTML = caseStudies[id];
-            document.getElementById('caseStudyModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeCaseStudy() {
-            document.getElementById('caseStudyModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close on click outside
-        document.getElementById('caseStudyModal').addEventListener('click', function(e) {
-            if (e.target === this) closeCaseStudy();
-        });
-
-        // Close on Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeCaseStudy();
-        });
-    </script>
-
-</body>
-</html>
+               
