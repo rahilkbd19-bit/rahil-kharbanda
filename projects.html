@@ -332,4 +332,51 @@
                 </ol>
                 
                 <h2>The Kind of Solutions That Came Out of It</h2>
+                                <p>Without disclosing the specific mechanics — those stay with the client, by design — the work landed on two connected strategic tracks:</p>
+                <ul>
+                    <li><strong>An acquisition strategy</strong> for the outbound-student segment, built on distribution channels that already existed in adjacent ecosystems rather than requiring new infrastructure, sequenced carefully around the licensing boundary the company operates under.</li>
+                    <li><strong>An institutional trust-and-content strategy</strong>, built around a structural insight the competitive research surfaced: the single biggest content risk in this category is over-indexing on one person's presence, and the strongest content models are the ones that can survive a change in who's in the room.</li>
+                </ul>
+                <p>Both tracks were designed to reinforce the same funnel rather than run as separate initiatives — trust-building content and acquisition mechanics feeding the same audience at different points in their decision-making, rather than competing for budget as unrelated projects.</p>
+                
+                <h2>What This Project Actually Tested</h2>
+                <p>Strip away the insurance-specific detail and this was an exercise in a few transferable skills:</p>
+                <ul>
+                    <li>Turning a vague strategic mandate into a falsifiable set of research questions</li>
+                    <li>Holding a hard line between "confirmed," "observed," and "unverified" — and never letting the deadline blur that line</li>
+                    <li>Catching my own confirmation bias by deliberately re-running research through an independently-prompted second pass</li>
+                    <li>Designing strategy that has to survive a skeptical, technically literate audience, not just sound persuasive in the room</li>
+                    <li>Knowing when a compelling number is actually a category error waiting to be caught by someone smarter than the slide</li>
+                </ul>
+                
+                <div class="mt-8 p-4 bg-gray-50 dark:bg-gray-700 border-l-4 border-indigo-500 rounded-r-lg">
+                    <p class="text-sm text-gray-500 dark:text-gray-400 italic">Details of the specific strategic recommendations, channel partnerships, and content architecture developed for Axis Max Life Insurance are withheld from public disclosure, as this work remains a competitive strategic asset for the client.</p>
+                </div>
+            `
+        };
+
+        function showCaseStudy(id) {
+            document.getElementById('caseStudyContent').innerHTML = caseStudies[id];
+            document.getElementById('caseStudyModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCaseStudy() {
+            document.getElementById('caseStudyModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on click outside
+        document.getElementById('caseStudyModal').addEventListener('click', function(e) {
+            if (e.target === this) closeCaseStudy();
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeCaseStudy();
+        });
+    </script>
+
+</body>
+</html>
                
